@@ -1,3 +1,13 @@
+# This is an example of module.
+#
+# A module is basically a group of steps.
+#
+# The module.yaml file goes through a templating engine first before getting parsed. So some variables are available:
+#
+# - {{ .Job }} and its childs, which represent the Job object using the module. Can be useful if you want to dynamically set an value based on the job.
+# - {{ .Step }} and its childs, which represent the Step object using the module. Can be useful if you want the step name.
+#
+# To outputs environment variables, just append KEY=value to the "${DEEPSQUARE_ENV}" file.
 name: 'Hello World'
 description: 'An example of module'
 inputs:
@@ -19,5 +29,6 @@ steps:
         registry: registry-1.docker.io
         image: library/busybox:latest
       command: |
+        echo "Running with {{ .Job.Resources.MemPerCPU }}M of memory"
         echo "Hello ${WHO}"
         echo "RESULT=Hello ${WHO}" >> ${DEEPSQUARE_ENV}
