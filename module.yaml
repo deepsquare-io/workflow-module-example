@@ -1,0 +1,23 @@
+name: 'Hello World'
+description: 'An example of module'
+inputs:
+  - key: WHO
+    description: 'Who to greet'
+    default: 'World'
+outputs:
+  - key: RESULT
+    despcription: 'Resulting string'
+minimumResources:
+  tasks: 1
+  cpusPerTask: 1
+  memPerCpu: 100
+  gpusPerTask: 0
+steps:
+  - name: Say hello World"
+    run:
+      container:
+        registry: registry-1.docker.io
+        image: library/busybox:latest
+      command: |
+        echo "Hello ${WHO}"
+        echo "RESULT=Hello ${WHO}" >> ${DEEPSQUARE_ENV}
