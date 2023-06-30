@@ -1,4 +1,4 @@
-name: 'Hello World'
+name: 'Another Hello World'
 description: 'An other example of module'
 minimumResources:
   tasks: 1
