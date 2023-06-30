@@ -1,0 +1,15 @@
+name: 'Hello World'
+description: 'An other example of module'
+minimumResources:
+  tasks: 1
+  cpusPerTask: 1
+  memPerCpu: 100
+  gpusPerTask: 0
+steps:
+  - name: Say Hello World"
+    run:
+      container:
+        registry: registry-1.docker.io
+        image: library/busybox:latest
+      command: |
+        echo "Hi"
